@@ -33,10 +33,38 @@ public class SistemaCine {
                     mostrarMapa(sala);
                     break;
                 case 2:
-                    // aquí irá la lógica para reservar
+                    System.out.print("Ingresa el número de fila (1 a 5): ");
+                    int filaReservar = teclado.nextInt() - 1;
+                    System.out.print("Ingresa el número de columna (1 a 8): ");
+                    int columnaReservar = teclado.nextInt() - 1;
+
+                    if (filaReservar < 0 || filaReservar >= sala.length ||
+                            columnaReservar < 0 || columnaReservar >= sala[0].length) {
+                        System.out.println("Posición inválida.");
+                    } else if (sala[filaReservar][columnaReservar].equals("D")) {
+                        sala[filaReservar][columnaReservar] = "O";
+                        System.out.println("Asiento reservado con éxito.");
+                        mostrarMapa(sala);
+                    } else {
+                        System.out.println("Ese asiento ya está ocupado.");
+                    }
                     break;
                 case 3:
-                    // aquí irá la lógica para liberar
+                    System.out.print("Ingresa el número de fila (1 a 5): ");
+                    int filaLiberar = teclado.nextInt() - 1;
+                    System.out.print("Ingresa el número de columna (1 a 8): ");
+                    int columnaLiberar = teclado.nextInt() - 1;
+
+                    if (filaLiberar < 0 || filaLiberar >= sala.length ||
+                            columnaLiberar < 0 || columnaLiberar >= sala[0].length) {
+                        System.out.println("Posición inválida.");
+                    } else if (sala[filaLiberar][columnaLiberar].equals("O")) {
+                        sala[filaLiberar][columnaLiberar] = "D";
+                        System.out.println("Asiento liberado con éxito.");
+                        mostrarMapa(sala);
+                    } else {
+                        System.out.println("Ese asiento ya está disponible.");
+                    }
                     break;
                 case 4:
                     System.out.println("Saliendo del sistema...");
@@ -66,6 +94,8 @@ public class SistemaCine {
             System.out.println();
         }
     }
+
+
 }
 
 
